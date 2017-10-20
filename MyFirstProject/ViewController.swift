@@ -11,22 +11,24 @@ import UIKit
 class ViewController: UIViewController , UITextFieldDelegate{
 
     
-    @IBOutlet weak var in_name: UITextField!
-    @IBOutlet weak var in_password: UITextField!
-    @IBOutlet weak var tv_password: UILabel!
-    @IBOutlet weak var tv_name: UILabel!
+    @IBOutlet weak var in_task: UITextField!
+    @IBOutlet weak var tv_show_tasks: UITextView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        in_name.delegate = self
-        in_password.delegate = self
     }
 
-   @IBAction func loginTap(_ sender: Any) {
-        if let name = in_name.text {
-            tv_name.text = "Name : \(name) !"
-            in_name.resignFirstResponder()
+   
+    @IBAction func btn_task_to_do(_ sender: Any) {
+        if let task = in_task.text{
+            if task == ""{
+                return
+            }
+            tv_show_tasks.text.append("\(task)\n")
+            in_task.text = ""
+            in_task.resignFirstResponder()
         }
     }
     
@@ -35,16 +37,7 @@ class ViewController: UIViewController , UITextFieldDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        in_name.resignFirstResponder()
-        in_password.resignFirstResponder()
-        return false
-    }
+   
     
 }
 
