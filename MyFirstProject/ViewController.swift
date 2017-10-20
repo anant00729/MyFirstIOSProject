@@ -10,11 +10,26 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var in_name: UITextField!
+    @IBOutlet weak var in_password: UITextField!
+    
+    @IBOutlet weak var tv_password: UILabel!
+    
+    @IBOutlet weak var tv_name: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
+   
+    
+    @IBAction func loginTap(_ sender: Any) {
+        if let name = in_name.text {
+            tv_name.text = "Name : \(name) !"
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
