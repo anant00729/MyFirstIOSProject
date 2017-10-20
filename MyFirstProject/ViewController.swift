@@ -23,9 +23,7 @@ class ViewController: UIViewController {
     }
 
    
-    @IBAction func onRegisterClick(_ sender: Any) {
-        tv_password.text = "Hello Arnav"
-    }
+    
     
     @IBAction func loginTap(_ sender: Any) {
         if let name = in_name.text {
