@@ -8,26 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController , UITextFieldDelegate{
 
     
     @IBOutlet weak var in_name: UITextField!
     @IBOutlet weak var in_password: UITextField!
-    
     @IBOutlet weak var tv_password: UILabel!
-    
     @IBOutlet weak var tv_name: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        in_name.delegate = self
+        in_password.delegate = self
     }
 
-   
-    
-    
-    @IBAction func loginTap(_ sender: Any) {
+   @IBAction func loginTap(_ sender: Any) {
         if let name = in_name.text {
             tv_name.text = "Name : \(name) !"
+            in_name.resignFirstResponder()
         }
     }
     
@@ -35,7 +34,17 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        in_name.resignFirstResponder()
+        in_password.resignFirstResponder()
+        return false
+    }
+    
 }
 
